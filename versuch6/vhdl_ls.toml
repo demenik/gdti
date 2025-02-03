@@ -1,0 +1,13 @@
+[libraries]
+my_rs_latch.files = ["my_rs_latch.vhdl", "my_rs_latch_tb.vhdl"]
+my_gated_d_latch.files = [
+	"my_rs_latch.vhdl",
+	"my_gated_d_latch.vhdl",
+	"my_gated_d_latch_tb.vhdl",
+]
+my_d_ff.files = [
+	"my_rs_latch.vhdl",
+	"my_gated_d_latch.vhdl",
+	"my_d_ff.vhdl",
+	"my_d_ff_tb.vhdl",
+]

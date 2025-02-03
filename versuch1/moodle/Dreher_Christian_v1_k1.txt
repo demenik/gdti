@@ -1,0 +1,90 @@
+
+Aufgabe 1
+
+1 >> meine_erste_Datei.txt
+rm meine_erste_Datei.txt
+
+Aufgabe 2
+
+cat sortiere_mich.txt
+Dies soll die 1. Zeile sein
+Dies soll die 2. Zeile sein
+Dies soll die 20. Zeile sein
+Dies soll die 3. Zeile sein
+Dies slll die 4. Zeile sein (mit Tippfehler, Absicht!)
+Dies soll die 11. Zeile sein
+Dies soll die 6. Zeile sein
+Dies söll die 7. Zeile sein (mit Tippfehler, Absicht!)
+Dies soll die 8. Zeile sein
+Dies soll die 10. Zeile sein
+Dies soll die 15. Zeile sein
+Dies soll die 12. Zeile sein
+Dies soll die 9. Zeile sein
+Dies soll die 16. Zeile sein
+Dies soll die 13. Zeile sein
+Dies soll die 5. Zeile sein
+Dies soll die 14. Zeile sein
+Dies soll die 17. Zeile sein
+Dies soll die 18. Zeile sein
+Dies soll die 19. Zeile sein
+(oder gedit sortiere_mich.txt)
+(oder nano sortiere_mich.txt)
+
+Aufgabe 3
+
+wc --bytes sortiere_mich.txt
+626 sortiere_mich.txt
+wc --words sortiere_mich.txt
+126 sortiere_mich.txt
+wc --lines sortiere_mich.txt
+20 sortiere_mich.txt
+cat sortiere_mich.txt | grep -i "absicht"
+Dies slll die 4. Zeile sein (mit Tippfehler, Absicht!)
+Dies söll die 7. Zeile sein (mit Tippfehler, Absicht!)
+
+Aufgabe 4
+
+cat sortiert.txt | head -n 5
+Zeile 1
+Zeile 2
+Zeile 3
+Zeile 4
+Zeile 5
+cat sortiert.txt | tail -n 5
+Zeile 16
+Zeile 17
+Zeile 18
+Zeile 19
+Zeile 20
+cat sortiert.txt | tail -n +6
+Zeile 6
+Zeile 7
+Zeile 8
+Zeile 9
+Zeile 10
+Zeile 11
+Zeile 12
+Zeile 13
+Zeile 14
+Zeile 15
+Zeile 16
+Zeile 17
+Zeile 18
+Zeile 19
+Zeile 20
+cat sortiert.txt | head -n -5
+Zeile 1
+Zeile 2
+Zeile 3
+Zeile 4
+Zeile 5
+Zeile 6
+Zeile 7
+Zeile 8
+Zeile 9
+Zeile 10
+Zeile 11
+Zeile 12
+Zeile 13
+Zeile 14
+Zeile 15

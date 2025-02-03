@@ -1,0 +1,47 @@
+|dice
+INPUT[0] => s_INPUT[0].DATAIN
+INPUT[1] => s_INPUT[1].DATAIN
+INPUT[2] => s_INPUT[2].DATAIN
+CLOCK_50 => s_INPUT[0].CLK
+CLOCK_50 => s_INPUT[1].CLK
+CLOCK_50 => s_INPUT[2].CLK
+OUTPUT[0] <= dice_decoder:wuerfel_0.p_OUTPUT[0]
+OUTPUT[1] <= dice_decoder:wuerfel_0.p_OUTPUT[1]
+OUTPUT[2] <= dice_decoder:wuerfel_0.p_OUTPUT[2]
+OUTPUT[3] <= dice_decoder:wuerfel_0.p_OUTPUT[3]
+OUTPUT[4] <= dice_decoder:wuerfel_0.p_OUTPUT[4]
+OUTPUT[5] <= dice_decoder:wuerfel_0.p_OUTPUT[5]
+OUTPUT[6] <= dice_decoder:wuerfel_0.p_OUTPUT[6]
+
+
+|dice|dice_decoder:wuerfel_0
+p_INPUT[0] => Mux0.IN10
+p_INPUT[0] => Mux1.IN10
+p_INPUT[0] => Mux2.IN10
+p_INPUT[0] => Mux3.IN10
+p_INPUT[0] => Mux4.IN10
+p_INPUT[0] => Mux5.IN10
+p_INPUT[0] => Mux6.IN10
+p_INPUT[1] => Mux0.IN9
+p_INPUT[1] => Mux1.IN9
+p_INPUT[1] => Mux2.IN9
+p_INPUT[1] => Mux3.IN9
+p_INPUT[1] => Mux4.IN9
+p_INPUT[1] => Mux5.IN9
+p_INPUT[1] => Mux6.IN9
+p_INPUT[2] => Mux0.IN8
+p_INPUT[2] => Mux1.IN8
+p_INPUT[2] => Mux2.IN8
+p_INPUT[2] => Mux3.IN8
+p_INPUT[2] => Mux4.IN8
+p_INPUT[2] => Mux5.IN8
+p_INPUT[2] => Mux6.IN8
+p_OUTPUT[0] <= Mux6.DB_MAX_OUTPUT_PORT_TYPE
+p_OUTPUT[1] <= Mux5.DB_MAX_OUTPUT_PORT_TYPE
+p_OUTPUT[2] <= Mux4.DB_MAX_OUTPUT_PORT_TYPE
+p_OUTPUT[3] <= Mux3.DB_MAX_OUTPUT_PORT_TYPE
+p_OUTPUT[4] <= Mux2.DB_MAX_OUTPUT_PORT_TYPE
+p_OUTPUT[5] <= Mux1.DB_MAX_OUTPUT_PORT_TYPE
+p_OUTPUT[6] <= Mux0.DB_MAX_OUTPUT_PORT_TYPE
+
+

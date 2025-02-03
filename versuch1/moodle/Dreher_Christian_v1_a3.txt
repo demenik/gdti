@@ -1,0 +1,5 @@
+wc --bytes sortiere_mich.txt
+wc --words sortiere_mich.txt
+wc --lines sortiere_mich.txt
+cat sortiere_mich.txt | grep -i "absicht"
+cat sortiere_mich.txt | sort -Vd -k 4
