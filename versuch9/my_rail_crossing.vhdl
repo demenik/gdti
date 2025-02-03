@@ -90,6 +90,64 @@ architecture dataflow_full of my_rail_crossing is
     signal S1_next, S0_next: STD_LOGIC;
     signal s_TIMER_RUN, s_TIMER_OUT: STD_LOGIC := '0';
     signal s_Timer: integer range 0 to 5 := 0;
+    signal S_0000, S_0001, S_0010, S_0011, S_0100, S_0101, S_0110, S_0111, S_1000, S_1001, S_1010, S_1011: STD_LOGIC;
+begin
+-- begin solution:
+    -- Flip-Flops
+    process (p_CLK) begin
+        if rising_edge(p_CLK) then
+            S1 <= S1_next;
+            S0 <= S0_next;
+        end if;
+    end process;
+
+    -- Timer
+    process (p_CLK_1HZ) begin
+        if s_TIMER_RUN = '1' then
+            if rising_edge(p_CLK_1HZ) then
+                if s_Timer = 4 then -- 4 entspricht 5s, da wir in der 5. Sekunde überprüfen ob s_Timer = 4
+                    s_Timer <= 0;
+                    s_TIMER_OUT <= '1';
+                else
+                    s_Timer <= s_Timer + 1;
+                    s_TIMER_OUT <= '0';
+                end if;
+            end if;
+        else
+            s_Timer <= 0;
+        end if;
+    end process;
+
+    -- Minterme
+    S_0000 <= not S1 and not S0 and not p_TRACK_OCCUPIED and not s_TIMER_OUT;
+    S_0001 <= not S1 and not S0 and not p_TRACK_OCCUPIED and     s_TIMER_OUT;
+    S_0010 <= not S1 and not S0 and     p_TRACK_OCCUPIED and not s_TIMER_OUT;
+    S_0011 <= not S1 and not S0 and     p_TRACK_OCCUPIED and     s_TIMER_OUT;
+    S_0100 <= not S1 and     S0 and not p_TRACK_OCCUPIED and not s_TIMER_OUT;
+    S_0101 <= not S1 and     S0 and not p_TRACK_OCCUPIED and     s_TIMER_OUT;
+    S_0110 <= not S1 and     S0 and     p_TRACK_OCCUPIED and not s_TIMER_OUT;
+    S_0111 <= not S1 and     S0 and     p_TRACK_OCCUPIED and     s_TIMER_OUT;
+    S_1000 <=     S1 and not S0 and not p_TRACK_OCCUPIED and not s_TIMER_OUT;
+    S_1001 <=     S1 and not S0 and not p_TRACK_OCCUPIED and     s_TIMER_OUT;
+    S_1010 <=     S1 and not S0 and     p_TRACK_OCCUPIED and not s_TIMER_OUT;
+    S_1011 <=     S1 and not S0 and     p_TRACK_OCCUPIED and     s_TIMER_OUT;
+
+    -- Disjunktion der Minterme
+    S1_next <= S_0011 or S_0111 or S_1010 or S_1011;
+    S0_next <= S_0010 or S_0110;
+    s_TIMER_RUN <= S_0010 or S_0011 or S_0110 or S_0111 or S_1010 or S_1011;
+
+    -- Ausgänge
+    p_TRAFFIC_LIGHT <= S0 or S1;
+    p_GATE <= S1;
+-- end solution!!
+end dataflow_full;
+
+architecture dataflow_min of my_rail_crossing is
+    signal S1, S0: STD_LOGIC := '0';
+    signal S1_next, S0_next: STD_LOGIC;
+    signal s_TIMER_RUN, s_TIMER_OUT: STD_LOGIC := '0';
+    signal s_Timer: integer range 0 to 5 := 0;
 begin
 -- begin solution:
     -- Flip-Flops
@@ -127,12 +185,6 @@ begin
     -- Ausgänge
     p_TRAFFIC_LIGHT <= S0 or S1;
     p_GATE <= S1;
--- end solution!!
-end dataflow_full;
-
-architecture dataflow_min of my_rail_crossing is
-begin
--- begin solution:
 -- end solution!!
 end dataflow_min;
 
